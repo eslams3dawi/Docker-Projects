@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5 text-center">
+
+    <h1 class="display-4">🚀 Welcome Eslam</h1>
+    <h3 class="text-primary">Dockerized ASP.NET Core MVC Project</h3>
+
+    <hr />
+
+    <p class="lead">
+        This project demonstrates how to containerize an ASP.NET Core 8 MVC application using Docker.
+    </p>
+
+    <div class="text-start mt-4">
+
+        <h4>📌 Steps I followed to Dockerize this project:</h4>
+
+        <ol>
+            <li>Created ASP.NET Core MVC Project (.NET 8)</li>
+
+            <li>
+                Installed Docker and configured environment
+            </li>
+
+            <li>
+                Created <strong>Dockerfile</strong> using multi-stage build:
+                <ul>
+                    <li>Build stage using <code>dotnet/sdk</code></li>
+                    <li>Publish application in Release mode</li>
+                    <li>Runtime stage using <code>aspnet runtime image</code></li>
+                </ul>
+            </li>
+
+            <li>
+                Restored dependencies using:
+                <pre><code>dotnet restore</code></pre>
+            </li>
+
+            <li>
+                Published application:
+                <pre><code>dotnet publish -c Release -o /app</code></pre>
+            </li>
+
+            <li>
+                Built Docker image:
+                <pre><code>docker build -t dockertestapp .</code></pre>
+            </li>
+
+            <li>
+                Ran container with port mapping:
+                <pre><code>docker run -d -p 5000:80 --name dockerTest dockertestapp</code></pre>
+            </li>
+
+            <li>
+                Handled common issues:
+                <ul>
+                    <li>Port conflicts (8080 already in use)</li>
+                    <li>Container name conflicts</li>
+                    <li>Missing ASP.NET runtime in image</li>
+                </ul>
+            </li>
+
+            <li>
+                Accessed application via:
+                <pre><code>http://localhost:5000</code></pre>
+            </li>
+        </ol>
+
+    </div>
+
+    <hr />
+
+    <div class="mt-4">
+        <h4>🐳 Final Result</h4>
+        <p>
+            The application is now successfully running inside a Docker container,
+            fully isolated and ready for deployment.
+        </p>
+    </div>
+
+    <p class="mt-4">
+        Learn more about ASP.NET Core:
+        <a href="https://learn.microsoft.com/aspnet/core" target="_blank">
+            Microsoft Documentation
+        </a>
+    </p>
+
+</div>
