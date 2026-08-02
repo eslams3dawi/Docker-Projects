@@ -1,0 +1,8 @@
+version: '3'
+services:
+  redis:
+    image: "redis"
+  node:
+    build: . # builds the Dockerfile in the current directory
+    ports:
+      - "3000:3000"
